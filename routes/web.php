@@ -13,20 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+use App\Http\Controllers\EventoController;
 
-    $nome = 'Vinicius';
-    $idade = 22;
-    $profissao = 'Programador';
-    $arr = ['Francisco', 'Rodolfo', 'Lopes da Silva', 'Pedro', 'Rodriguinho', 'Teixeira', 'Bruno Francisneldo', 'Gustavo Tavares', 'Rodrigo Neto', 'Neto Craque', 'Moreira Nero', 'Joaquim da Silva'];
-
-    return view('welcome', [
-        'nome' => $nome,
-        'idade' => $idade,
-        'profissao' => $profissao,
-        'arr' => $arr
-    ]);
-});
+Route::get('/', [EventoController::class, 'index']);
+Route::get('/eventos/criar', [EventoController::class, 'create']);
 
 
 Route::get('/contato', function(){
@@ -35,9 +25,21 @@ Route::get('/contato', function(){
 
 });
 
-
+//Query String
 Route::get('/produtos', function(){
 
-    return view('produtos');
+    $pesquisa = request('categoria'); //Armazena o valor da Query String se o parâmetro for informado na URL
+
+    return view('produtos', [
+        'pesquisa' => $pesquisa
+    ]);
+
+});
+//Resgatando parâmetros de URL
+Route::get('/produtos_teste/{id?}', function($id = 'Valor Qualquer'){   //Definindo se o parâmetro é opcional '{id?}' e valor de parâmetro padrão caso não houver parâmetro
+
+    return view('produto', [
+        'id' => $id
+    ]);
 
 });
