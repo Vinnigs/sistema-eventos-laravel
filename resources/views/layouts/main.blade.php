@@ -35,11 +35,20 @@
             
             @yield('content')
     
-            <footer>
-                <hr>
-                <p>Vinnigs Eventos &copy; 2023.</p>
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 my-10 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                  <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <img src="/assets/img/logo-vinni.svg" style="width: 64px;">
+                  </a>
+                  <span class="mb-3 mb-md-0 text-muted">&copy; 2023, VinniGomes</span>
+                </div>
+            
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                  <li class="ms-3"><a class="text-muted" href="#"><ion-icon name="logo-github"></ion-icon></a></li>
+                  <li class="ms-3"><a class="text-muted" href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                  <li class="ms-3"><a class="text-muted" href="#"><ion-icon name="globe-outline"></ion-icon></a></li>
+                </ul>
             </footer>
-
 
         </div>
         

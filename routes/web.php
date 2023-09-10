@@ -24,22 +24,3 @@ Route::get('/contato', function(){
     return view('contato');
 
 });
-
-//Query String
-Route::get('/produtos', function(){
-
-    $pesquisa = request('categoria'); //Armazena o valor da Query String se o parâmetro for informado na URL
-
-    return view('produtos', [
-        'pesquisa' => $pesquisa
-    ]);
-
-});
-//Resgatando parâmetros de URL
-Route::get('/produtos_teste/{id?}', function($id = 'Valor Qualquer'){   //Definindo se o parâmetro é opcional '{id?}' e valor de parâmetro padrão caso não houver parâmetro
-
-    return view('produto', [
-        'id' => $id
-    ]);
-
-});

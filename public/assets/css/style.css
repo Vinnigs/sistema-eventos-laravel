@@ -14,6 +14,10 @@ div#container{
     margin: 0 auto;
 }
 
+div.cont-cards{
+    margin-top: 40px;
+}
+
 footer{
     margin-top: 56px;
 }
