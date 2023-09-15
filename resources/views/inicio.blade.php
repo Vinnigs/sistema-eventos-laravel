@@ -34,65 +34,35 @@
 
     {{-- Seção Eventos --}}
     <div id="container">
+        {{-- Notices --}}
+        @if( session('msg') )
 
+            <p class="alert alert-success">{{ session('msg') }}</p>
+
+        @endif
         {{-- Cards --}}
         <section id="eventos-inicio" class="row">
-            <div class="col-12 col-md-6 col-lg-4 gy-4">
-                <div class="card">
-                    <img src="/assets/img/event_placeholder.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Baile do Helipa</h5>
-                        <span class="card-text d-flex align-items-center gap-1 mb-1"><ion-icon name="location-outline"></ion-icon> São Paulo, SP</span>
-                        <span class="card-text d-flex align-items-center gap-1 mb-3"><ion-icon name="people-outline"></ion-icon> X Participantes</span>
-                        <a href="#" class="btn btn-primary">Saiba mais</a>
+            @if(count($eventos) != 0 && count($eventos) != NULL)
+                @foreach($eventos as $evento)
+                    <div class="col-12 col-md-6 col-lg-4 gy-4">
+                        <div class="card">
+                            <img src="/assets/img/eventos/{{$evento->img}}" class="card-img-top" style="max-height:200px; min-height:200px; object-fit:cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$evento->titulo}}</h5>
+                                <span class="card-text d-flex align-items-center gap-1 mb-1"><ion-icon name="location-outline"></ion-icon>{{$evento->localizacao}}</span>
+                                <span class="card-text d-flex align-items-center gap-1 mb-3"><ion-icon name="people-outline"></ion-icon>{{$evento->participantes}} Participantes</span>
+                                <a href="#" class="btn btn-primary">Saiba mais</a>
+                            </div>
+                            <div class="card-header border-0 border-top d-flex align-items-center gap-2"><ion-icon name="calendar-outline"></ion-icon>{{$evento->data}}</div>
+                        </div>
                     </div>
-                    <div class="card-header border-0 border-top d-flex align-items-center gap-2"><ion-icon name="calendar-outline"></ion-icon> 25/03/2024</div>
-                </div>
-            </div>
+                @endforeach
+            @else
+                <p class="alert alert-warning">Não há eventos disponíveis.</p>
+            @endif
 
-            <div class="col-12 col-md-6 col-lg-4 gy-4">
-                <div class="card">
-                    <img src="/assets/img/event_placeholder.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Baile do Helipa</h5>
-                        <span class="card-text d-flex align-items-center gap-1 mb-1"><ion-icon name="location-outline"></ion-icon> São Paulo, SP</span>
-                        <span class="card-text d-flex align-items-center gap-1 mb-3"><ion-icon name="people-outline"></ion-icon> X Participantes</span>
-                        <a href="#" class="btn btn-primary">Saiba mais</a>
-                    </div>
-                    <div class="card-header border-0 border-top d-flex align-items-center gap-2"><ion-icon name="calendar-outline"></ion-icon> 25/03/2024</div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 gy-4">
-                <div class="card">
-                    <img src="/assets/img/event_placeholder.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Baile do Helipa</h5>
-                        <span class="card-text d-flex align-items-center gap-1 mb-1"><ion-icon name="location-outline"></ion-icon> São Paulo, SP</span>
-                        <span class="card-text d-flex align-items-center gap-1 mb-3"><ion-icon name="people-outline"></ion-icon> X Participantes</span>
-                        <a href="#" class="btn btn-primary">Saiba mais</a>
-                    </div>
-                    <div class="card-header border-0 border-top d-flex align-items-center gap-2"><ion-icon name="calendar-outline"></ion-icon> 25/03/2024</div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4 gy-4">
-                <div class="card">
-                    <img src="/assets/img/event_placeholder.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Baile do Helipa</h5>
-                        <span class="card-text d-flex align-items-center gap-1 mb-1"><ion-icon name="location-outline"></ion-icon> São Paulo, SP</span>
-                        <span class="card-text d-flex align-items-center gap-1 mb-3"><ion-icon name="people-outline"></ion-icon> X Participantes</span>
-                        <a href="#" class="btn btn-primary">Saiba mais</a>
-                    </div>
-                    <div class="card-header border-0 border-top d-flex align-items-center gap-2"><ion-icon name="calendar-outline"></ion-icon> 25/03/2024</div>
-                </div>
-            </div>
         </section>
-
     </div>
     {{----}}
-
-
-
+    {{-- <p class="alert alert-warning">Não há eventos disponíveis.</p> --}}
 @endsection
